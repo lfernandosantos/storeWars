@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.stone.lfernandosantos.storewars.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/layoutMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recyclerView"
+            android:layout_above="@+id/btnCompras"
+            android:layout_alignParentTop="true" />
+
+        <Button
+            android:id="@+id/btnHistorico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="histórico de compras"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+
+        <Button
+            android:id="@+id/btnCompras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Compras"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/btnHistorico"
+            android:layout_toStartOf="@+id/btnHistorico"
+            android:layout_marginRight="19dp"
+            android:layout_marginEnd="19dp" />
+
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
