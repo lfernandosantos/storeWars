@@ -74,7 +74,7 @@ public class DetailActivity extends AppCompatActivity {
                 product.carrinho = "1";
                 dao.saveProduct(product);
                 dao.close();
-                Snackbar.make(btnCarrinho, "Item Adcionado ao carrinho!", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(btnCarrinho, "Item adcionado!", Snackbar.LENGTH_SHORT).show();
             }
         });
     }
