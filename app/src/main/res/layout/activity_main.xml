@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.stone.lfernandosantos.storewars.MainActivity">
+    tools:context="com.stone.lfernandosantos.storewars.views.MainActivity">
 
     <RelativeLayout
         android:id="@+id/layoutMain"
@@ -19,21 +19,21 @@
             android:layout_above="@+id/btnCompras"
             android:layout_alignParentTop="true" />
 
-        <Button
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/btnHistorico"
+            android:src="@drawable/ic_history_black_24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="histórico de compras"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
 
-        <Button
+        <android.support.design.widget.FloatingActionButton
+            android:src="@drawable/ic_shopping_cart_black_24dp"
             android:id="@+id/btnCompras"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Compras"
             android:layout_alignParentBottom="true"
             android:layout_toLeftOf="@+id/btnHistorico"
             android:layout_toStartOf="@+id/btnHistorico"

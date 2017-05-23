@@ -1,4 +1,4 @@
-package com.stone.lfernandosantos.storewars;
+package com.stone.lfernandosantos.storewars.controlers;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

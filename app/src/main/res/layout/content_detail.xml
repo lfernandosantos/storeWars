@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.stone.lfernandosantos.storewars.DetailActivity"
+    tools:context="com.stone.lfernandosantos.storewars.views.DetailActivity"
     tools:showIn="@layout/activity_detail">
 
     <LinearLayout
@@ -26,6 +26,16 @@
 
         <TextView
             android:id="@+id/txtViewSellerDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtViewDateDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtViewZipcodeDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

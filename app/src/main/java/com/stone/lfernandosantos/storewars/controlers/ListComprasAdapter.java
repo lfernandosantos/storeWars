@@ -17,7 +17,7 @@ import java.util.List;
  * Created by lf.fernandodossantos on 21/05/17.
  */
 
-public class ListaComprasAdapter  extends BaseAdapter{
+public class ListComprasAdapter extends BaseAdapter{
 
     private List<Product> products;
     private Activity activity;
@@ -26,7 +26,7 @@ public class ListaComprasAdapter  extends BaseAdapter{
     private TextView txtSeller;
     private TextView txtPrice;
 
-    public ListaComprasAdapter(List<Product> products, Activity activity) {
+    public ListComprasAdapter(List<Product> products, Activity activity) {
         this.products = products;
         this.activity = activity;
     }
@@ -52,8 +52,8 @@ public class ListaComprasAdapter  extends BaseAdapter{
         View v =  activity.getLayoutInflater().inflate(R.layout.item_carrinho_adapter, parent, false);
 
         imgCompra = (ImageView) v.findViewById(R.id.imageViewComprasAdp);
-        txtTitle = (TextView) v.findViewById(R.id.txtTitleComprasAdp);
-        txtSeller = (TextView) v.findViewById(R.id.txtSellerComprasAdp);
+        txtTitle = (TextView) v.findViewById(R.id.txtTitleProductAdp);
+        txtSeller = (TextView) v.findViewById(R.id.txtSellerProductAdp);
         txtPrice = (TextView) v.findViewById(R.id.txtPriceComprasAdp);
 
         Glide.with(activity).load(products.get(position).thumbnailHd).into(imgCompra);

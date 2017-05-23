@@ -1,7 +1,8 @@
-package com.stone.lfernandosantos.storewars;
+package com.stone.lfernandosantos.storewars.views;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,9 +12,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.stone.lfernandosantos.storewars.R;
 import com.stone.lfernandosantos.storewars.controlers.IProductsService;
-import com.stone.lfernandosantos.storewars.controlers.ListaProductsAdapter;
+import com.stone.lfernandosantos.storewars.controlers.ListProductsAdapter;
 import com.stone.lfernandosantos.storewars.controlers.RecyclerViewOnClickListenerHack;
+import com.stone.lfernandosantos.storewars.controlers.SupportStatus;
 import com.stone.lfernandosantos.storewars.models.Product;
 
 import java.util.List;
@@ -28,11 +31,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
 
     SupportStatus status;
     List<Product> products;
-    private Button btnHistorico;
-    private Button btnCompras;
+    private FloatingActionButton btnHistorico;
+    private FloatingActionButton btnCompras;
 
     private RecyclerView recyclerView;
-    private ListaProductsAdapter productsAdapter;
+    private ListProductsAdapter productsAdapter;
 
     ProgressDialog progressDialog;
 
@@ -43,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
 
         progressDialog = new ProgressDialog(this);
 
-        btnHistorico = (Button) findViewById(R.id.btnHistorico);
-        btnCompras = (Button) findViewById(R.id.btnCompras);
+        btnHistorico = (FloatingActionButton) findViewById(R.id.btnHistorico);
+        btnCompras = (FloatingActionButton) findViewById(R.id.btnCompras);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -64,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
         btnCompras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CarrinhoActivity.class));
+                startActivity(new Intent(MainActivity.this, CartActivity.class));
 
             }
         });
@@ -87,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
 
                 products = response.body();
 
-                productsAdapter = new ListaProductsAdapter(products, MainActivity.this);
+                productsAdapter = new ListProductsAdapter(products, MainActivity.this);
                 productsAdapter.setmRecyclerViewOnClickListenerHack(MainActivity.this);
                 recyclerView.setAdapter(productsAdapter);
 

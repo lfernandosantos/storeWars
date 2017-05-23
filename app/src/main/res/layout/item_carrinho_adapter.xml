@@ -18,16 +18,14 @@
             android:id="@+id/imageViewComprasAdp"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="23dp"
-            android:layout_marginStart="23dp"
             android:layout_marginTop="22dp"
-            app:srcCompat="@drawable/no_image" />
+            app:srcCompat="@drawable/no_image"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
-            android:id="@+id/txtTitleComprasAdp"
+            android:id="@+id/txtTitleProductAdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/imageViewComprasAdp"
@@ -38,10 +36,10 @@
             android:layout_toRightOf="@+id/imageViewComprasAdp" />
 
         <TextView
-            android:id="@+id/txtSellerComprasAdp"
+            android:id="@+id/txtSellerProductAdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtTitleComprasAdp"
+            android:layout_below="@+id/txtTitleProductAdp"
             android:layout_marginLeft="23dp"
             android:layout_marginTop="12dp"
             android:layout_toRightOf="@+id/imageViewComprasAdp" />
@@ -50,14 +48,16 @@
             android:id="@+id/txtPriceComprasAdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="testes"
-            android:textSize="20sp"
+            android:layout_alignTop="@+id/txtSellerProductAdp"
             android:layout_marginRight="10dp"
-            android:layout_alignTop="@+id/txtSellerComprasAdp"
             android:layout_toLeftOf="@+id/txtQTD"
-            android:layout_toStartOf="@+id/txtQTD" />
+            android:layout_toStartOf="@+id/txtQTD"
+            android:textSize="20sp" />
 
         <TextView
+            android:padding="2dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:id="@+id/txtQTD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,15 +65,16 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignStart="@+id/imgLess"
-            android:layout_alignTop="@+id/txtPriceComprasAdp"
             android:text="1"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:layout_below="@+id/imgMore"
+            android:layout_above="@+id/imgLess" />
 
         <ImageView
             android:id="@+id/imgMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/txtQTD"
+            android:layout_above="@+id/txtSellerProductAdp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:src="@drawable/ic_arrow_drop_up_black_24dp"
@@ -83,10 +84,10 @@
             android:id="@+id/imgLess"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_arrow_drop_down_black_24dp"
+            android:layout_below="@+id/txtSellerProductAdp"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/txtQTD"
-            android:src="@drawable/ic_arrow_drop_down_black_24dp" />
+            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

@@ -9,23 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".views.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".CarrinhoActivity" />
-        <activity android:name=".CardDataActivity" />
+        <activity android:name=".views.MainActivity" />
+        <activity android:name=".views.CartActivity" />
+        <activity android:name=".views.CardDataActivity" />
         <activity
-            android:name=".DetailActivity"
+            android:name=".views.DetailActivity"
             android:label="@string/title_activity_detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".HistoricoActivity"
+            android:name=".views.HistoricoActivity"
             android:label="@string/title_activity_historico"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.ListCardsActivity"
+            android:label="@string/title_activity_list_cards"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

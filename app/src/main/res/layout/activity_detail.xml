@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.stone.lfernandosantos.storewars.DetailActivity">
+    tools:context="com.stone.lfernandosantos.storewars.views.DetailActivity">
 
     <android.support.design.widget.AppBarLayout
         android:backgroundTint="#FFF"
@@ -20,7 +20,7 @@
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginStart="10dp"
             app:expandedTitleMarginEnd="10dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollFlags="exitUntilCollapsed"
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent">

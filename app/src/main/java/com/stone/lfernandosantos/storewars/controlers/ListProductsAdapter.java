@@ -1,7 +1,6 @@
 package com.stone.lfernandosantos.storewars.controlers;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,26 +9,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.model.StringLoader;
 import com.stone.lfernandosantos.storewars.R;
 import com.stone.lfernandosantos.storewars.models.Product;
 
 import java.util.List;
 
-import javax.xml.transform.dom.DOMLocator;
-
 /**
  * Created by lf.fernandodossantos on 20/05/17.
  */
 
-public class ListaProductsAdapter extends RecyclerView.Adapter<ListaProductsAdapter.MyViewHolder> {
+public class ListProductsAdapter extends RecyclerView.Adapter<ListProductsAdapter.MyViewHolder> {
 
     private List<Product> products;
     private LayoutInflater inflater;
     private Context context;
     private RecyclerViewOnClickListenerHack mRecyclerViewOnClickListenerHack;
 
-    public ListaProductsAdapter(List<Product> products, Context context) {
+    public ListProductsAdapter(List<Product> products, Context context) {
         this.products = products;
         this.context = context;
 
