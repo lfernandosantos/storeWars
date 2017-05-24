@@ -11,12 +11,11 @@ public class Order implements Serializable {
     public long idOrder;
     public String date;
     public Double total;
+    public String itens;
 
     public String getPrice() {
 
-        Double p = total / 100;
-
-        String priceFormat = String.format("%.2f",p);
+        String priceFormat = String.format("%.2f",total);
         return priceFormat;
     }
 

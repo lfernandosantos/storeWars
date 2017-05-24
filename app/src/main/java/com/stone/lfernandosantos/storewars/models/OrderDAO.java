@@ -25,7 +25,7 @@ public class OrderDAO extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String ddl = "CREATE TABLE "+ TABELA + "(idOrder TEXT, date TEXT, total TEXT);";
+        String ddl = "CREATE TABLE "+ TABELA + "(idOrder TEXT, date TEXT, total TEXT, itens TEXT);";
         db.execSQL(ddl);
     }
 
@@ -43,6 +43,7 @@ public class OrderDAO extends SQLiteOpenHelper {
         values.put("idOrder", String.valueOf(order.idOrder));
         values.put("date", order.date);
         values.put("total", String.valueOf(order.total));
+        values.put("itens", order.itens);
 
         getWritableDatabase().insert(TABELA, null, values);
     }
@@ -60,6 +61,7 @@ public class OrderDAO extends SQLiteOpenHelper {
             order.idOrder = c.getLong(c.getColumnIndex("idOrder"));
             order.date = c.getString(c.getColumnIndex("date"));
             order.total = c.getDouble(c.getColumnIndex("total"));
+            order.itens = c.getString(c.getColumnIndex("itens"));
 
             orders.add(order);
         }

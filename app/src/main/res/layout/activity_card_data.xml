@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.stone.lfernandosantos.storewars.views.CardDataActivity">
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="368dp"
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -22,43 +22,33 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cartão"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="16dp" />
+            android:text="Cartão"/>
 
             <EditText
                 android:id="@+id/edtCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="16"
-                android:inputType="number"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="33dp" />
+                android:inputType="number"/>
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="102dp" />
+            android:text="Nome"/>
 
             <EditText
                 android:id="@+id/edtNomeCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textCapCharacters"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="119dp" />
+                android:inputType="textCapCharacters"/>
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vencimento"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="174dp" />
+            android:text="Vencimento" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -92,9 +82,7 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CVV"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="249dp" />
+            android:text="CVV" />
 
             <EditText
                 android:maxLength="5"
@@ -104,25 +92,18 @@
                 android:ems="5"
                 android:inputType="number"
                 android:selectAllOnFocus="false"
-                android:singleLine="true"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="277dp" />
+                android:singleLine="true" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total da compra"
-            tools:layout_editor_absoluteX="129dp"
-            tools:layout_editor_absoluteY="352dp" />
+            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/btnSaveCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Salvar"
-            tools:layout_editor_absoluteX="136dp"
-            tools:layout_editor_absoluteY="411dp" />
+            android:text="Salvar"/>
 
         </LinearLayout>
     </ScrollView>

@@ -54,6 +54,7 @@ public class DetailActivity extends AppCompatActivity {
 
                 Intent goBuyIntent = new Intent(DetailActivity.this, CartActivity.class);
                 startActivity(goBuyIntent);
+                finish();
             }
         });
 
@@ -66,6 +67,7 @@ public class DetailActivity extends AppCompatActivity {
                 dao.saveProduct(product);
                 dao.close();
                 Snackbar.make(btnCarrinho, "Item adcionado!", Snackbar.LENGTH_SHORT).show();
+                finish();
             }
         });
     }

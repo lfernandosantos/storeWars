@@ -48,6 +48,8 @@
 
         </RelativeLayout>
         <Button
+            android:backgroundTint="#302f2f"
+            android:textColor="#FFF"
             android:id="@+id/buyBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

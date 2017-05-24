@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 
 public class Product implements Serializable{
+    public Long id;
     public String title;
     public Double price;
     public String zipcode;

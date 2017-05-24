@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class ProductDAO extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String ddl = "CREATE TABLE "+ TABELA + "(img TEXT, title TEXT, seller TEXT, price TEXT, zipcode TEXT, data TEXT" +
+        String ddl = "CREATE TABLE "+ TABELA + "(id INTEGER PRIMARY KEY, img TEXT, title TEXT, seller TEXT, price TEXT, zipcode TEXT, data TEXT" +
                 ", carrinho  TEXT, compra TEXT);";
         db.execSQL(ddl);
 
@@ -70,6 +71,7 @@ public class ProductDAO extends SQLiteOpenHelper {
         while (c.moveToNext()){
             Product product = new Product();
 
+            product.id = c.getLong(c.getColumnIndex("id"));
             product.thumbnailHd = c.getString(c.getColumnIndex("img"));
             product.title = c.getString(c.getColumnIndex("title"));
             product.seller = c.getString(c.getColumnIndex("seller"));
@@ -94,6 +96,7 @@ public class ProductDAO extends SQLiteOpenHelper {
         while (c.moveToNext()){
             Product product = new Product();
 
+            product.id = c.getLong(c.getColumnIndex("id"));
             product.thumbnailHd = c.getString(c.getColumnIndex("img"));
             product.title = c.getString(c.getColumnIndex("title"));
             product.seller = c.getString(c.getColumnIndex("seller"));
@@ -103,11 +106,19 @@ public class ProductDAO extends SQLiteOpenHelper {
             product.carrinho = c.getString(c.getColumnIndex("carrinho"));
             product.compra = c.getString(c.getColumnIndex("compra"));
 
-            if (product.carrinho != null || product.carrinho != "0"){
+            if (product.carrinho.equals("1")){
                 products.add(product);
             }
 
         }
         return products;
+    }
+
+    public void deletar(Product product) {
+
+        String [] args = {product.id.toString()};
+        getWritableDatabase().delete(TABELA,"id=?",args);
+
+        Log.i("DELET", "" + args);
     }
 }

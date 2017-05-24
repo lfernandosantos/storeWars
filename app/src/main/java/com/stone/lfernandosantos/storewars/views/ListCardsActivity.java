@@ -27,6 +27,7 @@ public class ListCardsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        setTitle("Cartões");
         listViewCards = (ListView) findViewById(R.id.listSavedCards);
 
         CardDAO dao = new CardDAO(this);

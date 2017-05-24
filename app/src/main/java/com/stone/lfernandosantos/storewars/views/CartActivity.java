@@ -3,9 +3,11 @@ package com.stone.lfernandosantos.storewars.views;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,7 +33,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-public class CartActivity extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity implements Runnable{
 
     private ListView listCompras;
     private Button btnComprar;
@@ -49,9 +51,8 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
+        setTitle("Carrinho");
         progressDialog = new ProgressDialog(this);
-
-        getProducts();
 
         findViews();
 
@@ -75,22 +76,20 @@ public class CartActivity extends AppCompatActivity {
             if (cards != null && cards.size() > 0){
 
                 paymentConfirm(cards);
+                //startActivity(new Intent(CartActivity.this, CardDataActivity.class));
 
             }else {
+                finish();
                 startActivity(new Intent(CartActivity.this, CardDataActivity.class));
             }
 
             }
         });
 
+        runCartList();
         runCardList();
     }
 
-    private void getProducts() {
-        products = new ArrayList<>();
-        ProductDAO dao = new ProductDAO(this);
-        products = dao.getProductsCarrinho();
-    }
 
     private void findViews() {
         btnComprar = (Button) findViewById(R.id.buyBtn);
@@ -129,6 +128,8 @@ public class CartActivity extends AppCompatActivity {
                     .setPositiveButton("confirmar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            progressDialog.setMessage("Aguarde...");
+                            progressDialog.show();
                             doPayment(totalPayment);
                         }
                     })
@@ -149,22 +150,44 @@ public class CartActivity extends AppCompatActivity {
 
         Order order = new Order();
 
-        order.idOrder = random.nextLong();
+        order.idOrder = random.nextInt(99999);
         order.date = format.format(date);
         order.total = total;
+        order.itens = String.valueOf(products.size());
 
-        //editar products colocando cart = 0
+        //        Client client = ClientBuilder.newClient();
+//        Entity payload = Entity.json("{  'card_number': '1234123412341234',  'value': 7990,  'cvv': 789,  'card_holder_name': 'Luke',  'exp_date': '12/15'}");
+//        javax.ws.rs.core.Response response = client.target("http://polls.apiblueprint.org/pay")
+//                .request(MediaType.APPLICATION_JSON_TYPE)
+//                .post(payload);
+//
+//        System.out.println("status: " + response.getStatus());
+//        //System.out.println("headers: " + response.getHeaders());
+//        System.out.println("body:" + response.readEntity(String.class));
 
         for (Product p : products){
             p.compra = String.valueOf(order.idOrder);
+            p.carrinho = "0";
             dao.saveProduct(p);
         }
 
         orderDAO.saveOrder(order);
-        dao.close();
         orderDAO.close();
 
+        List<Product> listDelet = dao.getProductsCarrinho();
+        for (Product p : listDelet){
+            dao.deletar(p);
+        }
+        dao.close();
+
+        Handler handler = new Handler();
+        handler.postDelayed(this, 3000);
+
+
+
     }
+
+
 
     @Override
     protected void onResume() {
@@ -172,14 +195,26 @@ public class CartActivity extends AppCompatActivity {
 
         progressDialog.setMessage("Aguarde...");
 
+        runCartList();
+        runCardList();
+
+        progressDialog.dismiss();
+    }
+
+    private void finaliza() {
+
+        finish();
+    }
+    private void runCartList() {
+
+        ProductDAO dao = new ProductDAO(this);
+        products = dao.getProductsCarrinho();
+
         if (products != null && products.size()>0) {
             ListComprasAdapter adapter = new ListComprasAdapter(products, this);
             listCompras.setAdapter(adapter);
         }
-
-        runCardList();
-
-        progressDialog.dismiss();
+        dao.close();
     }
 
     private void runCardList() {
@@ -191,17 +226,23 @@ public class CartActivity extends AppCompatActivity {
         }else {
             layoutCardSaved.setVisibility(View.INVISIBLE);
         }
+        daoCard.close();
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-        runCardList();
-    }
+    public void run() {
+        progressDialog.dismiss();
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        runCardList();
+        new AlertDialog.Builder(this)
+                .setCancelable(false)
+                .setMessage("Pedido Realizado!")
+                .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finaliza();
+                    }
+                })
+                .create().show();
+
     }
 }
